@@ -1,0 +1,11 @@
+{
+    "company_name": "alibaba", 
+    "contact_email": "a842617364@gmail.com", 
+    "contact_name": "Ma Yun", 
+    "hostname": "4ecef0cbe6d542e48d938b8827df5590", 
+    "instance_count": 10, 
+    "license_date": 2139358945, 
+    "license_key": "45a71e59df50020d37df63d7cd80c95503bc5b557b9d0eff9e1df038d5dd4276", 
+    "license_type": "basic", 
+    "subscription_name": "Ansible Tower by Red Hat, Self-Support (10 Managed Nodes)"
+}
