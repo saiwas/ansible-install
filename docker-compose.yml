@@ -1,0 +1,37 @@
+version: "3"
+services:
+  ansible_tower:
+    privileged: true
+    container_name: 'ansible_tower_server'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - db
+  db:
+    image: postgres:alpine
+    container_name: ansible_pg
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ansible}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ansible_pwd}
+      PGDATA: /data/postgres
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+  # redis:
+  #   container_name: ansible_redis
+  #   image: "redis:alpine"
+  #   ports:
+  #     - 6379:6379
+  # rabbitmq:
+  #   image: rabbitmq:3-management-alpine
+  #   container_name: ansible_rabbitmq
+  #   environment:
+  #       RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-ansible}
+  #       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-ansible_pwd}
+  #   ports:
+  #       - 5672:5672
+  #       - 15672:15672
